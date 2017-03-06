@@ -1,1 +1,1 @@
-IONIC APPSV2
+Cara menginstall IONIC APPSV2
