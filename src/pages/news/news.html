@@ -15,44 +15,19 @@
 <ion-title><img src="images/logo-header.png"></ion-title>
 </div>
 </ion-toolbar>
- 
+
 <div class="image">
 <h1 align="center" class="LastestNews"><span>Lastest News</span></h1>
 <img width="100%" src="images/sub-header-news.png">
 </div>
 
-<div padding>
-<img height="100%" width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/10\/14729242_10154105984821656_6465809599758044003_n-580x460.jpg">
-<h1  align="justify">2016 Indonesian National Team The Rhinos Squad Announcement</h1>
-<p fontsize="11px">PRUI have undergone a selection and training process for those who are eligible since May 2016. This programme has involved...</p>
-<a href="http:\/\/rugbyindonesia.or.id\/2016-indonesian-national-team-the-rhinos-squad-announcement\/">read more </a>
-</div>
-
-<div padding>
-<img height="100%" width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/10\/14409421_1116027505111755_7704192343663480714_o-580x460.jpg">
-<h1>Srikandi Sevens Tournament and Get Into Rugby Jagorawi</h1>
-              <p>State University of Jakarta \/ Universitas Negeri Jakarta (UNJ) Womens Rugby won the first annual Srikandi Cup National Sevens...</p>
-              <a href="http:\/\/rugbyindonesia.or.id\/srikandi-sevens-tournament-and-get-into-rugby-jagorawi\/">read more </a>
-    </div>
-
-     <div padding>
-          <img height="100%" width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/10\/14305186_516257171900733_188783180026685894_o-580x460.jpg">
-          <h1>Papua Sevens Rugby Dominates Historic Rugby Event</h1>
-          <p>There has been an exciting buzz circulating amongst the throngs of Rugby fans globally, since its re-inclusion into the Olympics...</p>
-          <a href="http:\/\/rugbyindonesia.or.id\/papua-sevens-rugby-dominates-historic-rugby-event\/">read more </a>
-    </div>
-
-    <div padding>
-          <img height="100%" width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/10\/14305186_516257171900733_188783180026685894_o-580x460.jpg">
-          <h1>Papua Sevens Rugby Dominates Historic Rugby Event</h1>
-          <p>There has been an exciting buzz circulating amongst the throngs of Rugby fans globally, since its re-inclusion into the Olympics...</p>
-          <a href="http:\/\/rugbyindonesia.or.id\/papua-sevens-rugby-dominates-historic-rugby-event\/">read more </a>
-    </div>
-
-    <div padding>
-          <img height="100%" width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/04\/Screenshots-580x460.jpg">
-          <h1>Indonesian Rugby Mobile Application Launched</h1>
-          <p>Persatuan Rugby Union Indonesia (PRUI) recently published a mobile apps to increase network and engagement within rugby players and fans...</p>
-          <a href="http:\/\/rugbyindonesia.or.id\/indonesian-rugby-mobile-application-launched\/">read more </a>
-   </div>
+<ion-content padding>
+<ion-list>
+<ion-item *ngFor ="let Company of companies">
+ <img height="100%" width="100%" src="{{Company.img}}">
+ <h1>{{Company.title}}</h1>
+ <p>{{Company.summary}}</p>
+ <a href="{{Company.url}}">read more</a>
+ </ion-item>
+ </ion-list>
 </ion-content>
