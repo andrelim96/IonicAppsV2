@@ -21,24 +21,15 @@
        <h1 style="position:absolute; top:20px;width:100%; color:white;" class="title">Fixture & Results</h1>
   </div>
   
-    <div>
-      <a href="http://rugbyindonesia.or.id/2016-jakarta-xv-series-2/">
-        <img width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/03\/1-Jakarta-XV-Banner-1024x343.jpg">
-      </a>
   
-    </div>
-    
-    <div>
-      <a href="http:\/\/jakarta-komodos.com\/jakarta-10s\/">
-        <img width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/03\/2-Jakarta-10s-Banner-1024x343.jpg">
-      </a>
+    <ion-item *ngFor ="let Company of companies">
+      <div>
+          <a href="{{Company.url}}"><img height="100%" width="100%" src="{{Company.img}}"></a>
+
+      </div>
+      
+    </ion-item>
   
-    </div>
-    
-    <div>
-      <a href="http:\/\/rugbyindonesia.or.id\/tournament-report-2016-rugbypass-com-nusantara-7s\/">
-        <img width="100%" src="http:\/\/rugbyindonesia.or.id\/wp-content\/uploads\/2016\/03\/3-Nusnatara-7s-1024x343.jpg">
-      </a>
-  
-    </div>
+
+
 </ion-content>

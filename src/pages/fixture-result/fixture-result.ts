@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController} from 'ionic-angular';
-
+import {JsonDataFixtures} from '../../providers/json-data-fixtures';
 /*
   Generated class for the FixtureResult page.
 
@@ -9,14 +9,20 @@ import { NavController} from 'ionic-angular';
 */
 @Component({
   selector: 'page-fixture-result',
-  templateUrl: 'fixture-result.html'
+  templateUrl: 'fixture-result.html',
+  providers:[JsonDataFixtures]
 })
+
 export class FixtureResultPage {
+  companies :any;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,public data:JsonDataFixtures) {
+	this.data.load().then(result => {
+   	this.companies = result;
+    });
 
-  ionViewDidLoad() {
-    console.log('Hello FixtureResult Page');
   }
-
+  
+  
 }
+

@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class JsonData {
+export class JsonDataFixtures {
 data : any;
 
   constructor(public http: Http) {
@@ -26,7 +26,7 @@ data : any;
 
         return new Promise(resolve => {
 
-            this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/news/list.json').subscribe(res => {
+            this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/fixtures/list.json').subscribe(res => {
 
                 this.data = res.json();
                 resolve(this.data);
@@ -34,5 +34,5 @@ data : any;
             });
         });
     }
-
 }
+
