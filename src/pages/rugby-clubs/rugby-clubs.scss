@@ -2,7 +2,6 @@ page-rugby-clubs {
 
 }
 
-}
 ion-title{
 	margin:0;
 	padding:0;
@@ -11,21 +10,21 @@ ion-title{
    background-image: url("images/header.png") !important;
 }
 
-.image { 
-   position: relative; 
+.image {
+   position: relative;
    width: 100%; /* for IE 6 */
    padding: 0;
 }
 
-.LastestNews { 
-   position: absolute; 
-   left: 0; 
-   width: 100%; 
+.LastestNews {
+   position: absolute;
+   left: 0;
+   width: 100%;
 }
 
-.LastestNews span { 
-   color: white; 
-   font: bold 24px/45px Helvetica, Sans-Serif; 
-   letter-spacing: -1px;  
-   padding: 10px; 
+.LastestNews span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   padding: 10px;
 }
