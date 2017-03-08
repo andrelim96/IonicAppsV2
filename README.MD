@@ -8,3 +8,4 @@ Cara menginstall IONIC APPSV2
 5. Untuk menjalankan aplikasi, ketik cd IonicRugbyApps untuk mengakses direktori IonicRugbyApps 
    kemudian jalankan aplikasi dengan perintah ionic serve untuk melihat tampilan aplikasi di
    web browser
+6. test
