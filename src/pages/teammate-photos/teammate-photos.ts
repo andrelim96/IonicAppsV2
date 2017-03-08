@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController} from 'ionic-angular';
-<<<<<<< HEAD
+
 import {Camera} from 'ionic-native';
-=======
-import { Camera } from 'ionic-native';
+
 import { JsonTeammatePage } from '../../providers/json-teammate-page';
->>>>>>> 45497678d6a9007b96b777b63cecd4322a6f6e4b
+
 
 /*
   Generated class for the TeammatePhotos page.
@@ -19,7 +18,7 @@ import { JsonTeammatePage } from '../../providers/json-teammate-page';
   providers: [JsonTeammatePage]
 })
 export class TeammatePhotosPage {
-<<<<<<< HEAD
+
 	
 	public base64Image:string;
 
@@ -59,27 +58,4 @@ export class TeammatePhotosPage {
   	//Handle error
   })
 */
-=======
-  public base64Image: String;
-  photos: any;
-
-  constructor(public navCtrl: NavController, public data: JsonTeammatePage) {
-    this.data.load().then(result => {
-      this.photos = result;
-    });
-  }
-
-  takePicture(){
-    Camera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
-        targetWidth: 1000,
-        targetHeight: 1000
-    }).then((imageData) => {
-      // imageData is a base64 encoded string
-        this.base64Image = "data:image/jpeg;base64," + imageData;
-    }, (err) => {
-        console.log(err);
-    });
-  }
->>>>>>> 45497678d6a9007b96b777b63cecd4322a6f6e4b
 }
