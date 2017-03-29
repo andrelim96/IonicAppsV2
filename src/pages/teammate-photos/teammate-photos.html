@@ -5,37 +5,38 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-	<ion-navbar class="bar bar-stable">
+  <ion-navbar class="bar bar-stable">
 <ion-buttons left>
-	<button ion-button clear>
-	<ion-icon name="home"></ion-icon>
-	</button>
+  <button ion-button clear>
+  <ion-icon name="home"></ion-icon>
+  </button>
 </ion-buttons>
 <ion-buttons right>
-	<button ion-button clear menuToggle>
-	<ion-icon name="menu"></ion-icon>
-	</button>
+  <button ion-button clear menuToggle>
+  <ion-icon name="menu"></ion-icon>
+  </button>
 </ion-buttons>
-	<ion-title><img src="images/logo-header.png"></ion-title>
-	</ion-navbar>
+  <ion-title><img src="images/logo-header.png"></ion-title>
+  </ion-navbar>
 
-	<div>
-	<h1 align="center" class="TeammatePhoto"><span>Teammate Photo</span></h1>
-	<img width="100%" src="images/sub-header-clubs.png">
-	</div>
+  <div>
+  <h1 align="center" class="TeammatePhoto"><span>Teammate Photo</span></h1>
+  <img width="100%" src="images/sub-header-clubs.png">
+  </div>
 
-	<button ion-button full color = "danger"(click)="takePicture()" class="button">Take photo</button>
-	<button ion-button full color = "danger">Import photo</button>
+  <button ion-button full color = "danger"(click)="takePicture()" class="button">Take photo</button>
+  <button ion-button full color = "danger"(click)=" accessGallery()" class = "button">Import photo</button>
 
-  <ion-content padding>
- <button ion-button color="primary" (click)="accessGallery()">Open Gallery</button>
- <img [src]="base64Image" *ngIf="base64Image" />
+
+<ion-content padding>
+     <img [src]="base64Image" *ngIf="base64Image" />
 </ion-content>
 
-	<ion-list>
-		<ion-item *ngFor ="let Photo of photos">
-			<img src="{{Photo.data}}">
-		</ion-item>
-	</ion-list>
+
+  <ion-list>
+    <ion-item *ngFor ="let Photo of photos">
+      <img src="{{Photo.data}}">
+    </ion-item>
+  </ion-list>
 
 </ion-content>

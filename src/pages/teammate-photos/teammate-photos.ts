@@ -5,7 +5,6 @@ import {Camera} from 'ionic-native';
 
 import { JsonTeammatePage } from '../../providers/json-teammate-page';
 
-
 /*
   Generated class for the TeammatePhotos page.
 
@@ -19,12 +18,17 @@ import { JsonTeammatePage } from '../../providers/json-teammate-page';
 })
 export class TeammatePhotosPage {
 
-	
+	cameraData:string;
+	photoTaken:boolean;
+	cameraUrl:string;
+	photoSelected:boolean;
+
 	public base64Image:string;
 
-  constructor(public navCtrl: NavController) {
-  	this.base64Image="https://placehold.it/150x150";
 
+  constructor(public navCtrl: NavController) {
+  	this.base64Image="";
+  	//this.photoTaken=false;
   }
 
   ionViewDidLoad() {
@@ -69,5 +73,34 @@ export class TeammatePhotosPage {
       console.log(err);
     });
   }
+
+
+selectFromGallery() {
+    var options = {
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI
+    };
+    Camera.getPicture(options).then((imageData) => {
+      this.cameraUrl = imageData;
+      this.photoSelected = true;
+      this.photoTaken = false;
+    }, (err) => {
+      // Handle error
+    });
+  }
+ 
+  openCamera() {
+    var options = {
+      sourceType: Camera.PictureSourceType.CAMERA,
+      destinationType: Camera.DestinationType.DATA_URL
+    };
+    Camera.getPicture(options).then((imageData) => {
+      this.cameraData = 'data:image/jpeg;base64,' + imageData;
+      this.photoTaken = true;
+      this.photoSelected = false;
+    }, (err) => {
+      // Handle error
+    });
+  }
 
 }
