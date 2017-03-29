@@ -37,8 +37,10 @@ $ cordova run android --device
 ```
 
 ## Anggota Kelompok
+```
 1.Andre 2014730056
 2.Riki R 2014730032
 3.Mirza L 2014730068
 4.Farhan F 2014730017
 5.Aldy M 2013730005
+```
