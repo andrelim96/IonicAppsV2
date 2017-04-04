@@ -16,6 +16,7 @@
 // automatically applied to the <body> element in the app.
 
 ion-list .item-md{
+	font-size: 75%;
 	background-color:transparent !important;
 	color:white !important;
 }
@@ -26,4 +27,13 @@ ion-list .item-md{
 
 ion-menu .content-md{
 	background-color:red !important;
+}
+.item-content {
+
+	
+}
+.logo-kecil{
+	width: 15%;
+	margin-right: 10px;
+	margin-top: 5px;
 }
