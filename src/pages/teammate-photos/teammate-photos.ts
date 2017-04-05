@@ -17,7 +17,12 @@ import { JsonTeammatePage } from '../../providers/json-teammate-page';
   providers: [JsonTeammatePage]
 })
 export class TeammatePhotosPage {
-
+	
+	//canvas = document.getElementById("canvas");
+    ctx:CanvasRenderingContext2D;
+    img1:any;
+    img2:any;
+    imagesLoaded:number;
 	cameraData:string;
 	photoTaken:boolean;
 	cameraUrl:string;
@@ -35,7 +40,7 @@ export class TeammatePhotosPage {
     console.log('Hello TeammatePhotos Page');
   }
 
-  takePicture(){
+  takePicture(frame:string){
   	Camera.getPicture({
   			quality : 75,
             destinationType : Camera.DestinationType.DATA_URL,
@@ -47,7 +52,23 @@ export class TeammatePhotosPage {
             saveToPhotoAlbum: false
 
   	}).then(imageData=>{
+  		
   		this.base64Image="data:image/jpeg;base64,"+imageData;
+  		this.img1=imageData;
+  		this.img2=frame;
+  		this.imagesLoaded += 1;
+
+  		//var src = "data:image/jpeg;base64,";
+		//this.img1 += item_image;
+		//newImage = document.createElement('img1');
+		//newImage.src = src;
+
+	    
+        this.ctx.drawImage(this.img1, 0, 0);
+        //gabs tipe data string
+        this.ctx.globalAlpha = 0.5;
+        this.ctx.drawImage(this.img2, 0, 0);
+	    
   	},error=>{
   		console.log("Error"+JSON.stringify(error));
   	});
@@ -63,6 +84,8 @@ export class TeammatePhotosPage {
   })
 */
 
+
+
  accessGallery(){
    Camera.getPicture({
      sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
@@ -74,6 +97,11 @@ export class TeammatePhotosPage {
     });
   }
 
+logoClick(nama:string){
+	//var nama = getDocumentById('frame1')
+	this.base64Image=nama;
+
+}
 
 selectFromGallery() {
     var options = {
