@@ -17,7 +17,7 @@ import { JsonTeammatePage } from '../../providers/json-teammate-page';
   providers: [JsonTeammatePage]
 })
 export class TeammatePhotosPage {
-	
+
 	//canvas = document.getElementById("canvas");
     ctx:CanvasRenderingContext2D;
     img1:any;
@@ -52,7 +52,7 @@ export class TeammatePhotosPage {
             saveToPhotoAlbum: false
 
   	}).then(imageData=>{
-  		
+
   		this.base64Image="data:image/jpeg;base64,"+imageData;
   		this.img1=imageData;
   		this.img2=frame;
@@ -63,12 +63,15 @@ export class TeammatePhotosPage {
 		//newImage = document.createElement('img1');
 		//newImage.src = src;
 
-	    
-        this.ctx.drawImage(this.img1, 0, 0);
-        //gabs tipe data string
-        this.ctx.globalAlpha = 0.5;
-        this.ctx.drawImage(this.img2, 0, 0);
-	    
+
+
+       this.ctx.drawImage(this.img1, 0, 0);
+       this.ctx.putImageData(this.img2, 0, 0);
+       this.ctx.globalCompositeOperation = "source-atop";
+
+
+
+
   	},error=>{
   		console.log("Error"+JSON.stringify(error));
   	});
@@ -116,7 +119,7 @@ selectFromGallery() {
       // Handle error
     });
   }
- 
+
   openCamera() {
     var options = {
       sourceType: Camera.PictureSourceType.CAMERA,
