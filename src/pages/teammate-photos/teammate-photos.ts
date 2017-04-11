@@ -54,21 +54,7 @@ export class TeammatePhotosPage {
   	}).then(imageData=>{
 
   		this.base64Image="data:image/jpeg;base64,"+imageData;
-  		this.img1=imageData;
-  		this.img2=frame;
-  		this.imagesLoaded += 1;
-
-      var canvas = <HTMLCanvasElement> document.getElementById('canvas');
-      var context = canvas.getContext('2d');
-
-      canvas.width = this.img1.width;
-      canvas.height = this.img1.height;
-
-      context.globalAlpha = 1.0;
-      context.drawImage(this.img1, 0, 0);
-      context.globalAlpha = 0.5;
-      context.drawImage(this.img2, 0, 0);
-
+  		
   		//var src = "data:image/jpeg;base64,";
 		  //this.img1 += item_image;
 		  //newImage = document.createElement('img1');
