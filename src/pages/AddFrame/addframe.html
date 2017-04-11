@@ -1,0 +1,71 @@
+<ion-content>
+  <ion-navbar class="bar bar-stable">
+<ion-buttons left>
+  <button ion-button clear>
+  <ion-icon name="home"></ion-icon>
+  </button>
+</ion-buttons>
+<ion-buttons right>
+  <button ion-button clear menuToggle>
+  <ion-icon name="menu"></ion-icon>
+  </button>
+</ion-buttons>
+  <ion-title><img src="assets/images/logo-header.png"></ion-title>
+  </ion-navbar>
+
+  <div>
+  <h1 align="center" class="TeammatePhoto"><span>Teammate Photo</span></h1>
+  <img width="100%" src="assets/images/sub-header-clubs.png">
+  </div><ion-item><canvas #myCanvas class="myCanvas" width="400" height="400"></canvas></ion-item>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+              <img src="assets/images/frame01.png" alt="" (click)="selectFrame('frame01')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/images/frame02.png" alt="" (click)="selectFrame('frame02')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/images/frame03.png" alt="" (click)="selectFrame('frame03')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/images/frame04.png" alt="" (click)="selectFrame('frame04')">
+            </ion-col>
+            <ion-col>
+                <img src="assets/images/frame05.png" alt="" (click)="selectFrame('frame05')">
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <img src="assets/images/frame06.png" alt="" (click)="selectFrame('frame06')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/images/frame07.png" alt="" (click)="selectFrame('frame07')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/images/frame08.png" alt="" (click)="selectFrame('frame08')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/images/frame09.png" alt="" (click)="selectFrame('frame09')">
+          </ion-col>
+          <ion-col>
+            <img src="assets/images/frame10.png" alt="" (click)="selectFrame('frame10')">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <button (click)="uploadImage()" color ="secondary"  class="button button-full button-positive" ion-button icon-only>
+              <ion-icon name="cloud-upload"></ion-icon>
+            Submit
+            </button>
+        </ion-row>
+        <ion-row>
+            <button color ="secondary"  class="button button-full button-positive" ion-button icon-only>
+              <ion-icon name="share"></ion-icon>
+              Share
+            </button>
+        </ion-row>
+    </ion-grid>
+</ion-content>

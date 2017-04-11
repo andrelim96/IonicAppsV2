@@ -24,37 +24,36 @@
   <img width="100%" src="assets/images/sub-header-clubs.png">
   </div>
 
-  <button ion-button full color = "danger"(click)="takePicture()" class="button">Take photo</button>
-  <button ion-button full color = "danger"(click)="accessGallery()" class = "button">Import photo</button>
+<ion-grid>
+    <ion-row>
+      <ion-col>
+        <button color="secondary" (click)="openCamera()" class="button button-full" ion-button icon-only >
+          <ion-icon name="camera"></ion-icon>
+          Take a Photos
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button color ="secondary" (click)="useGallery()" class="button button-full" ion-button icon-only>
+          <ion-icon name="apps"></ion-icon>
+          Load from Library
+        </button>
+      </ion-col>
+    </ion-row>
 
 
-<ion-content padding>
-     <img [src]="base64Image" *ngIf="base64Image" />
-     <canvas width="150" height="150" id="canvas"></canvas>
-
-    <ion-item>
-      <img class="logo-kecil2" src="assets/images/frame01.png" (click)="logoClick('images/frame01.png')">
-      <img class="logo-kecil2" src="assets/images/frame02.png">
-      <img class="logo-kecil2" src="assets/images/frame03.png">
-      <img class="logo-kecil2" src="assets/images/frame04.png">
-      <img class="logo-kecil2" src="assets/images/frame05.png">
-      <br>
-      <img class="logo-kecil2" src="assets/images/frame06.png">
-      <img class="logo-kecil2" src="assets/images/frame07.png">
-      <img class="logo-kecil2" src="assets/images/frame08.png">
-      <img class="logo-kecil2" src="assets/images/frame09.png">
-      <img class="logo-kecil2" src="assets/images/frame10.png">
-
-
-    </ion-item>
-
-</ion-content>
-
-
-  <ion-list>
-    <ion-item *ngFor ="let Photo of photos">
-      <img src="{{Photo.data}}">
-    </ion-item>
-  </ion-list>
+    <!-- Pull Content Image -->
+    <ion-row wrap>
+      <ion-col width-50 *ngFor="let post of jsonItems?.data">
+        <ion-card>
+          <ion-item>
+            <img [src]="post"/>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

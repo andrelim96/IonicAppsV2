@@ -1,134 +1,145 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { AlertController, NavController, ToastController, LoadingController, Loading, Nav } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { Camera, File} from 'ionic-native';
+import { AddFrame } from '../AddFrame/addframe';
 
-import {Camera} from 'ionic-native';
-
-import { JsonTeammatePage } from '../../providers/json-teammate-page';
-
-/*
-  Generated class for the TeammatePhotos page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+declare var cordova:any;
 @Component({
   selector: 'page-teammate-photos',
-  templateUrl: 'teammate-photos.html',
-  providers: [JsonTeammatePage]
+  templateUrl: 'teammate-photos.html'
 })
 export class TeammatePhotosPage {
 
-	  //var canvas = document.getElementById("canvas");
-    ctx:CanvasRenderingContext2D;
-    img1:any;
-    img2:any;
-    imagesLoaded:number;
-	  cameraData:string;
-	  photoTaken:boolean;
-	  cameraUrl:string;
-	  photoSelected:boolean;
+  selectedItem: any;
+  icons: string[];
+  items: Array<{title: string, note: string, icon: string}>;
+  jsonItems: any;
 
-	public base64Image:string;
+  lastImage: string = null;
+  loading: Loading;
+  path:string = null;
+  htt:any;
+  public base64Image:string;
+  json:any;
+  navi:any;
 
-
-  constructor(public navCtrl: NavController) {
-  	this.base64Image="";
-  	//this.photoTaken=false;
+  constructor(public alerCtrl: AlertController, public http:Http, public toastCtrl:ToastController, public loadingCtrl:LoadingController, public navCtrl:NavController, public nav:Nav){
+    this.navi = nav;
+    this.htt = http;
+    this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/photos/list.json')
+    .subscribe(res => this.jsonItems = res.json());
+    console.log(this.jsonItems);
   }
 
-  ionViewDidLoad() {
-    console.log('Hello TeammatePhotos Page');
-  }
 
-  takePicture(frame:string){
-  	Camera.getPicture({
-  			quality : 75,
-            destinationType : Camera.DestinationType.DATA_URL,
-            sourceType : Camera.PictureSourceType.CAMERA,
-            allowEdit : true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 300,
-            targetHeight: 300,
-            saveToPhotoAlbum: false
-
-  	}).then(imageData=>{
-
-  		this.base64Image="data:image/jpeg;base64,"+imageData;
-  		
-  		//var src = "data:image/jpeg;base64,";
-		  //this.img1 += item_image;
-		  //newImage = document.createElement('img1');
-		  //newImage.src = src;
-
-
-
-       //this.ctx.drawImage(this.img1, 0, 0);
-       //this.ctx.putImageData(this.img2, 0, 0);
-       //this.ctx.globalCompositeOperation = "source-atop";
-
-
-
-
-  	},error=>{
-  		console.log("Error"+JSON.stringify(error));
-  	});
-  }
-
-/*
-  getPicture(option).then((imageData)=>{
-  	let baseImage= 'data:image/jpeg;base64,'+imageData;
-
-  },(err)=>{
-
-  	//Handle error
-  })
-*/
-
-
-
- accessGallery(){
-   Camera.getPicture({
-     sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-     destinationType: Camera.DestinationType.DATA_URL
-    }).then((imageData) => {
-      this.base64Image = 'data:image/jpeg;base64,'+imageData;
-     }, (err) => {
-      console.log(err);
-    });
-  }
-
-logoClick(nama:string){
-	//var nama = getDocumentById('frame1')
-	this.base64Image=nama;
-
-}
-
-selectFromGallery() {
-    var options = {
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: Camera.DestinationType.FILE_URI
-    };
-    Camera.getPicture(options).then((imageData) => {
-      this.cameraUrl = imageData;
-      this.photoSelected = true;
-      this.photoTaken = false;
-    }, (err) => {
-      // Handle error
-    });
-  }
 
   openCamera() {
-    var options = {
-      sourceType: Camera.PictureSourceType.CAMERA,
-      destinationType: Camera.DestinationType.DATA_URL
-    };
-    Camera.getPicture(options).then((imageData) => {
-      this.cameraData = 'data:image/jpeg;base64,' + imageData;
-      this.photoTaken = true;
-      this.photoSelected = false;
-    }, (err) => {
-      // Handle error
+  console.log(cordova.file);
+    let confirm = this.alerCtrl.create({
+      title: 'Use this Camera?',
+      message: 'Do you agree to use this Camera to take a teammate photos?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            //  console.log('Agree clicked
+            Camera.getPicture({
+              quality: 50,
+              destinationType: Camera.DestinationType.DATA_URL,
+              sourceType: Camera.PictureSourceType.CAMERA,
+              encodingType: Camera.EncodingType.JPEG,
+              targetWidth: 400,
+              targetHeight: 400,
+              saveToPhotoAlbum: true,
+              correctOrientation:true
+            }).then((imageData) => {
+              // imageData is either a base64 encoded string or a file URI
+              // If it's base64:
+              this.base64Image = 'data:image/jpeg;base64,' + imageData;
+              this.lastImage = this.base64Image;
+              this.navCtrl.push(AddFrame, {base64: this.lastImage});
+              //this.moveEdit();
+              //this.uploadImage();
+            }, (err) => {
+              console.log(err);
+            });
+          }
+        }
+      ]
     });
+    confirm.present()
   }
 
+  useGallery() {
+    let confirm = this.alerCtrl.create({
+      title: 'Upload from gallery?',
+      message: 'Do you agree to use gallery to upload your photos?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            Camera.getPicture({
+              quality: 50,
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+              targetWidth: 400,
+              targetHeight: 400
+            }).then((imageData) => {
+              this.base64Image = 'data:image/png;base64,' + imageData;
+              this.lastImage = this.base64Image;
+              this.navCtrl.push(AddFrame, {base64: this.lastImage});
+            }, (err) => {
+              console.log(err);
+            });
+          }
+          }
+      ]
+    });
+    confirm.present()
+  }
+
+  pathForImage(img) {
+  if (img === null) {
+
+  } else {
+    this.path = 'asd';
+    this.path = cordova.file.dataDirectory + img;
+  }
+}
+
+presentToast(text) {
+  let toast = this.toastCtrl.create({
+    message: text,
+    duration: 5000,
+    position: 'top'
+  });
+  toast.present();
+}
+
+
+  copyFileToLocalDir(namePath, currentName, base64Image) {
+  File.copyFile(namePath, currentName, cordova.file.dataDirectory, base64Image).then(success => {
+    this.lastImage = base64Image;
+  }, error => {
+    this.presentToast('Error while storing file.');
+  });
+}
+
+
+  moveEdit(){
+    this.navi.setRoot(AddFrame);
+  }
 }
