@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, NavController, ToastController, LoadingController, Loading, Nav } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Camera, File} from 'ionic-native';
-import { AddFrame } from '../AddFrame/addframe';
+import { AddFramePage } from '../addframe/addframe';
 
 declare var cordova:any;
 @Component({
@@ -36,20 +36,6 @@ export class TeammatePhotosPage {
 
   openCamera() {
   console.log(cordova.file);
-    let confirm = this.alerCtrl.create({
-      title: 'Use this Camera?',
-      message: 'Do you agree to use this Camera to take a teammate photos?',
-      buttons: [
-        {
-          text: 'Disagree',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Agree',
-          handler: () => {
-            //  console.log('Agree clicked
             Camera.getPicture({
               quality: 50,
               destinationType: Camera.DestinationType.DATA_URL,
@@ -64,33 +50,15 @@ export class TeammatePhotosPage {
               // If it's base64:
               this.base64Image = 'data:image/jpeg;base64,' + imageData;
               this.lastImage = this.base64Image;
-              this.navCtrl.push(AddFrame, {base64: this.lastImage});
+              this.navCtrl.push(AddFramePage, {base64: this.lastImage});
               //this.moveEdit();
               //this.uploadImage();
             }, (err) => {
               console.log(err);
             });
-          }
-        }
-      ]
-    });
-    confirm.present()
   }
 
   useGallery() {
-    let confirm = this.alerCtrl.create({
-      title: 'Upload from gallery?',
-      message: 'Do you agree to use gallery to upload your photos?',
-      buttons: [
-        {
-          text: 'Disagree',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Agree',
-          handler: () => {
             Camera.getPicture({
               quality: 50,
                     destinationType: Camera.DestinationType.DATA_URL,
@@ -100,15 +68,10 @@ export class TeammatePhotosPage {
             }).then((imageData) => {
               this.base64Image = 'data:image/png;base64,' + imageData;
               this.lastImage = this.base64Image;
-              this.navCtrl.push(AddFrame, {base64: this.lastImage});
+              this.navCtrl.push(AddFramePage, {base64: this.lastImage});
             }, (err) => {
               console.log(err);
             });
-          }
-          }
-      ]
-    });
-    confirm.present()
   }
 
   pathForImage(img) {
@@ -140,6 +103,6 @@ presentToast(text) {
 
 
   moveEdit(){
-    this.navi.setRoot(AddFrame);
+    this.navi.setRoot(AddFramePage);
   }
 }

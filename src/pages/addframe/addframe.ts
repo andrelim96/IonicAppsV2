@@ -4,16 +4,16 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { TeammatePhotosPage } from '../teammate-photos/teammate-photos';
 
 /*
-  Generated class for the Editphotos page.
+  Generated class for the addframe page.
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 declare var cordova:any;
 @Component({
-  selector: 'page-AddFrame',
+  selector: 'page-addframe',
   templateUrl: 'addframe.html'
 })
-export class AddFrame {
+export class AddFramePage {
   @ViewChild('myCanvas') myCanvas:ElementRef;
   base64Image:string;
   dataURL:string = 'asd';
@@ -35,7 +35,7 @@ export class AddFrame {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditphotosPage');
+    console.log('ionViewDidLoad AddFramePage');
   }
 
   uploadImage() {
@@ -64,26 +64,11 @@ export class AddFrame {
     this.loading.dismissAll();
     this.moveTeam();
 
-
-  // // Use the FileTransfer to upload the image
-  // fileTransfer.upload(this.base64Image, url, options, true).then(data => {
-  //   this.loading.dismissAll()
-  //   this.presentToast('Image succesful uploaded.');
-  // }, err => {
-  //   this.loading.dismissAll()
-  //   this.presentToast("ERROR " + JSON.stringify(err));
-  //
-  // });
-
-
   }
 
 
   ngAfterViewInit() { // wait for the view to init before using the element
     let context: CanvasRenderingContext2D = this.myCanvas.nativeElement.getContext("2d");
-    // happy drawing from here on
-    // context.fillStyle = 'blue';
-    // context.fillRect(10, 10, 150, 150);
     let base_image = new Image();
     let frameoo = new Image();
     frameoo.src = this.frame;
