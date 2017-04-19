@@ -30,10 +30,10 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'News', component: NewsPage },
-      { title: 'FixtureResults', component: FixtureResultPage },
-      { title: 'TeammatePhotos', component: TeammatePhotosPage },
-      { title: 'Rugby101', component: Rugby101Page },
-      { title: 'RugbyClubs', component: RugbyClubsPage }
+      { title: 'Fixtures & Results', component: FixtureResultPage },
+      { title: 'Teammate Photos', component: TeammatePhotosPage },
+      { title: 'Rugby 101', component: Rugby101Page },
+      { title: 'Rugby Clubs', component: RugbyClubsPage }
     ];
   }
 
