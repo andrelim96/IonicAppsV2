@@ -35,6 +35,11 @@ Run on android device
 ```
 $ cordova run android --device
 ```
+Cara memasang fitur kamera di apps
+
+ionic plugin add cordova-plugin-camera
+
+pada .ts tambahkan import {Camera} from 'ionic-native';
 
 ## Anggota Kelompok
 ```
