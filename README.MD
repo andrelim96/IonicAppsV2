@@ -39,7 +39,9 @@ $ cordova run android --device
 
 ionic plugin add cordova-plugin-camera
 
-pada .ts tambahkan import {Camera} from 'ionic-native';
+pada .ts tambahkan 
+
+import {Camera} from 'ionic-native';
 
 ## Anggota Kelompok
 ```
