@@ -41,7 +41,6 @@ ionic plugin add cordova-plugin-camera
 
 pada .ts tambahkan import {Camera} from 'ionic-native';
 
-
 ## Anggota Kelompok
 ```
 1.Andre 2014730056
