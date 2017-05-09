@@ -1,22 +1,15 @@
-<ion-content>
-  <ion-navbar class="bar bar-stable">
-<ion-buttons left>
-  <button ion-button clear>
-  <ion-icon name="home"></ion-icon>
-  </button>
-</ion-buttons>
-<ion-buttons right>
-  <button ion-button clear menuToggle>
-  <ion-icon name="menu"></ion-icon>
-  </button>
-</ion-buttons>
-  <ion-title><img src="assets/images/logo-header.png"></ion-title>
-  </ion-navbar>
+<ion-header>
+ <ion-navbar class="bar bar-stable">
+  <ion-buttons start left></ion-buttons>
+  <ion-buttons right></ion-buttons>
 
-  <div>
+ </ion-navbar>
+ </ion-header>
+
+<ion-content>
   <h1 align="center" class="TeammatePhoto"><span>Teammate Photo</span></h1>
   <img width="100%" src="assets/images/sub-header-clubs.png">
-  </div><ion-item><canvas #myCanvas class="myCanvas" width="350" height="350"></canvas></ion-item>
+  <ion-item style="width:400px;"><canvas #myCanvas class="myCanvas" width="400" height="400"></canvas></ion-item>
 
     <ion-grid>
         <ion-row>
@@ -67,5 +60,6 @@
               Share
             </button>
         </ion-row>
+        
     </ion-grid>
 </ion-content>

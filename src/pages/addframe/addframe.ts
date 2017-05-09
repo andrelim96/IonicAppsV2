@@ -27,8 +27,7 @@ export class AddFramePage {
 
   constructor(public http:Http, public navCtrl: NavController, public navParams: NavParams, public toastCtrl:ToastController, public loadingCtrl:LoadingController, public nav:Nav) {
     this.json = 'asd';
-    this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/photos/list.json')
-    .subscribe(res => this.json = res.json());
+    this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/clubs/list.json').subscribe(res => this.json = res.json());
     //this.presentToast(JSON.stringify(this.json));
     this.navi = nav;
     this.base64Image = navParams.get('base64');
@@ -44,8 +43,6 @@ export class AddFramePage {
     var url = 'https://ri-admin.azurewebsites.net/indonesianrugby/photos/upload.json';
   // File for Upload
     this.path = '';
-  //this.path = cordova.file.dataDirectory + this.base64Image;
-    console.log(this.path);
 
   //const fileTransfer = new Transfer();
     var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});

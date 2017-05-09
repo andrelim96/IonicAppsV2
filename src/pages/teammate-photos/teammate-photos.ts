@@ -27,8 +27,7 @@ export class TeammatePhotosPage {
   constructor(public alerCtrl: AlertController, public http:Http, public toastCtrl:ToastController, public loadingCtrl:LoadingController, public navCtrl:NavController, public nav:Nav){
     this.navi = nav;
     this.htt = http;
-    this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/photos/list.json')
-    .subscribe(res => this.jsonItems = res.json());
+    this.http.get('https://ri-admin.azurewebsites.net/indonesianrugby/photos/list.json').subscribe(res => this.jsonItems = res.json());
     console.log(this.jsonItems);
   }
 
@@ -66,8 +65,8 @@ export class TeammatePhotosPage {
               targetWidth: 400,
               targetHeight: 400
             }).then((imageData) => {
-              this.base64Image = 'data:image/png;base64,' + imageData;
-              this.lastImage = this.base64Image;
+              let base64Image = 'data:image/jpeg;base64,' + imageData;
+              this.lastImage = base64Image;
               this.navCtrl.push(AddFramePage, {base64: this.lastImage});
             }, (err) => {
               console.log(err);
